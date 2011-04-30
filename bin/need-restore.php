@@ -1,11 +1,7 @@
 <?php
-
-/**
- * @todo find a way to remove those two lines. Should work with default include_path.
- * Maybe I should add a configuration on the ini file for that ?!
- */
-define('ROOT_PATH', dirname(dirname(__FILE__)));
-set_include_path(get_include_path() . PATH_SEPARATOR . ROOT_PATH . '/library');
+if (getenv('INB')) {
+	set_include_path(get_include_path() . PATH_SEPARATOR . realpath(getenv('INB')));
+}
 
 require_once 'Zend/Loader/Autoloader.php';
 
