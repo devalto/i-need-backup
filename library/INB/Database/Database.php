@@ -28,7 +28,9 @@ class INB_Database_Database {
 		$ret = array();
 		
 		foreach($this->_stacks_by_name as $name => $stack) {
-			$ret[$name] = $stack->toArray();
+			if (!$stack->isEmpty()) {
+				$ret[$name] = $stack->toArray();
+			}
 		}
 		
 		return $ret;

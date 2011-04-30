@@ -8,6 +8,11 @@ class INB_Database_Stack {
 	
 	public function pop() {
 		$element = array_pop($this->_concrete_stack);
+		
+		if (!$element) {
+			return null;
+		}
+		
 		unset($this->_ids[array_search($element->getId(), $this->_ids)]);
 		
 		return $element;
@@ -39,7 +44,7 @@ class INB_Database_Stack {
 	
 	public function top() {
 		$top_index = count($this->_concrete_stack) - 1;
-		if ($top_index > 0) {
+		if ($top_index >= 0) {
 			return $this->_concrete_stack[$top_index];
 		}
 		
@@ -68,6 +73,10 @@ class INB_Database_Stack {
 		}
 		
 		return $ret;
+	}
+	
+	public function isEmpty() {
+		return count($this->_concrete_stack) == 0;
 	}
 	
 }
