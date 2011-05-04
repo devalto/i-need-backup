@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>INeedBackup</name>
+ <channel>pear.ada-consult.com</channel>
+ <summary>I need backup is a tool that takes backup of a database.</summary>
+ <description>I need backup is a tool that takes backup of a database and organize the SQL files in a stack for future restore.</description>
+ <lead>
+  <name>Sylvain Filteau</name>
+  <user>cidsphere</user>
+  <email>cidsphere@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>@@DATE@@</date>
+ <time>@@TIME@@</time>
+ <version>
+  <release>@@VERSION@@</release>
+  <api>@@VERSION@@</api>
+ </version>
+ <stability>
+  <release>@@STABILITY@@</release>
+  <api>@@STABILITY@@</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+ <notes>-</notes>
+ <contents>
+  <dir name="/">
+   <file baseinstalldir="/" name="need-backup.php" role="script" />
+   <file baseinstalldir="/" name="need-restore.php" role="script" />
+   <file baseinstalldir="/" name="INB/ConfigManager.php" role="php" />
+   <file baseinstalldir="/" name="INB/Shell.php" role="php" />
+   <file baseinstalldir="/" name="INB/Command/ArgumentException.php" role="php" />
+   <file baseinstalldir="/" name="INB/Command/Backup.php" role="php" />
+   <file baseinstalldir="/" name="INB/Command/CommandAbstract.php" role="php" />
+   <file baseinstalldir="/" name="INB/Command/ConfigurationException.php" role="php" />
+   <file baseinstalldir="/" name="INB/Command/Restore.php" role="php" />
+   <file baseinstalldir="/" name="INB/Command/StorageException.php" role="php" />
+   <file baseinstalldir="/" name="INB/Database/Database.php" role="php" />
+   <file baseinstalldir="/" name="INB/Database/Element.php" role="php" />
+   <file baseinstalldir="/" name="INB/Database/Stack.php" role="php" />
+   <file baseinstalldir="/" name="INB/Database/Adapter/AdapterAbstract.php" role="php" />
+   <file baseinstalldir="/" name="INB/Database/Adapter/AdapterFactory.php" role="php" />
+   <file baseinstalldir="/" name="INB/Database/Adapter/Json.php" role="php" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>@@VERSION@@</release>
+    <api>@@VERSION@@</api>
+   </version>
+   <stability>
+    <release>@@STABILITY@@</release>
+    <api>@@STABILITY@@</api>
+   </stability>
+   <date>@@DATE@@</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>-</notes>
+  </release>
+ </changelog>
+</package>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="INeedBackup" basedir="." default="pear-package">
+	
+	<property file="build.properties" />
+	
+	<property name="project.builddir" value="${project.basedir}/build" />
+	<property name="project.distdir" value="${project.basedir}/dist" />
+	<property name="project.pkgdir" value="${project.builddir}" />
+	<!--<property name="project.pkgdir" value="${project.builddir}/${project.name}-${project.version}" />-->
+	
+	<property name="project.srcdir" value="${project.basedir}/src" />
+	<property name="project.src.bindir" value="${project.srcdir}/bin" />
+	<property name="project.src.phpdir" value="${project.srcdir}/php" />
+	
+	<tstamp>
+		<format property="project.build.date" pattern="%Y-%m-%d" />
+	</tstamp>
+	<tstamp>
+		<format property="project.build.time" pattern="%H:%M:%S" />
+	</tstamp>
+	
+	<fileset dir="${project.src.bindir}" id="binfiles">
+		<include name="**/**"/>
+		<exclude name="**/.DS_Store"/>
+		<exclude name="**/.empty"/>
+		<exclude name="**/.svn"/>
+	</fileset>
+	<fileset dir="${project.src.phpdir}" id="phpfiles">
+		<include name="**/**"/>
+		<exclude name="**/.DS_Store"/>
+		<exclude name="**/.empty"/>
+		<exclude name="**/.svn"/>
+	</fileset>
+	
+	<filterchain id="version">
+		<replacetokens begintoken="@@" endtoken="@@">
+			<token key="VERSION" value="${project.version}" />
+			<token key="STABILITY" value="${project.stability}" />
+			<token key="DATE" value="${project.build.date}" />
+			<token key="TIME" value="${project.build.time}" />
+		</replacetokens>
+	</filterchain>
+	
+	<target name="pear-package" description="Create a pear package of the component">
+		<delete dir="${project.builddir}" />
+		<mkdir dir="${project.builddir}" />
+		
+		<copy todir="${project.pkgdir}">
+			<filterchain refid="version" />
+			
+			<fileset refid="binfiles"/>
+			<fileset refid="phpfiles"/>
+		</copy>
+		
+		<copy todir="${project.builddir}">
+			<filterchain refid="version" />
+			
+			<fileset dir=".">
+				<include name="package.xml" />
+			</fileset>
+		</copy>
+		
+		<exec command="pear package ${project.builddir}/package.xml" dir="${project.distdir}" checkreturn="true" logoutput="true" />
+	</target>
+	
+</project>

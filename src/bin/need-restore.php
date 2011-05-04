@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 if (getenv('INB')) {
 	set_include_path(get_include_path() . PATH_SEPARATOR . realpath(getenv('INB')));
