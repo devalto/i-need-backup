@@ -20,7 +20,7 @@ class INB_ConfigManager {
 		if (file_exists($config_file_name)) {
 			$config = new Zend_Config_Ini($config_file_name);
 			$config_array = $config->toArray();
-			
+
 			$initial_config = $this->_mergeConfig($initial_config, $config_array);
 		}
 		
@@ -108,7 +108,7 @@ class INB_ConfigManager {
 				// Numeric keyed values are added (unless already there)
 				if (is_numeric($key) && (!in_array($value, $return))) {
 					if (is_array($value)) {
-						$return[] = $this->_mergeConfig($return [$$key], $value);
+						$return[] = $this->_mergeConfig($return[$key], $value);
 					} else {
 						$return[] = $value;
 					}
@@ -116,7 +116,7 @@ class INB_ConfigManager {
 				// String keyed values are replaced
 				} else {
 					if (isset($return[$key]) && is_array($value) && is_array($return[$key])) {
-						$return[$key] = $this->_mergeConfig($return [$$key], $value);
+						$return[$key] = $this->_mergeConfig($return[$key], $value);
 					} else {
 						$return[$key] = $value;
 					}
