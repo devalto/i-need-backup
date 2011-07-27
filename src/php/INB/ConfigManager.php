@@ -1,5 +1,8 @@
 <?php
 
+require_once 'Zend/Config.php';
+require_once 'Zend/Config/Ini.php';
+
 class INB_ConfigManager {
 	
 	/**
